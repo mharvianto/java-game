@@ -95,8 +95,21 @@ public class Snake {
 		Color c = g.getColor();
 		g.setColor(color);
 		for (Point p : position) {
-			g.fillRect(p.x * SnakePanel.SCALE_RATIO, p.y * SnakePanel.SCALE_RATIO, SnakePanel.SCALE_RATIO,
-					SnakePanel.SCALE_RATIO);
+			if (p == tail) {
+				g.fillRect(p.x * SnakePanel.SCALE_RATIO - 1, p.y * SnakePanel.SCALE_RATIO - 1,
+						SnakePanel.SCALE_RATIO + 2, SnakePanel.SCALE_RATIO + 2);
+				g.setColor(Color.WHITE);
+				if(direction == Direction.UP || direction == Direction.DOWN) {
+					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 1, p.y * SnakePanel.SCALE_RATIO + 5, 3, 2);
+					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 6, p.y * SnakePanel.SCALE_RATIO + 5, 3, 2);
+				}else {
+					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 5, p.y * SnakePanel.SCALE_RATIO + 1, 2, 3);
+					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 5, p.y * SnakePanel.SCALE_RATIO + 6, 2, 3);
+				}
+			} else {
+				g.fillRect(p.x * SnakePanel.SCALE_RATIO, p.y * SnakePanel.SCALE_RATIO, SnakePanel.SCALE_RATIO,
+						SnakePanel.SCALE_RATIO);
+			}
 		}
 		g.setColor(c);
 	}
