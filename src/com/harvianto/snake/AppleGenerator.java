@@ -3,6 +3,7 @@ package com.harvianto.snake;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.Vector;
@@ -32,13 +33,11 @@ public class AppleGenerator {
 		try {
 			Iterator<Apple> it = listApples.iterator();
 			while (it.hasNext()) {
-
 				Apple apple = (Apple) it.next();
 				if (apple.equals(p)) {
-					listApples.removeElement(apple);
+					listApples.remove(apple);
 					return true;
 				}
-
 			}
 		} catch (ConcurrentModificationException ex) {
 			ex.printStackTrace();
@@ -48,7 +47,9 @@ public class AppleGenerator {
 
 	public void draw(Graphics g) {
 		try {
-			for (Apple apple : listApples) {
+			Iterator<Apple> it = listApples.iterator();
+			while (it.hasNext()) {
+				Apple apple = (Apple) it.next();
 				apple.draw(g);
 			}
 		} catch (ConcurrentModificationException ex) {
