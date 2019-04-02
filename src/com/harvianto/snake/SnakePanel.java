@@ -10,26 +10,26 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 public class SnakePanel extends JPanel {
-	
+
 	private Snake player1 = new Snake(this);
 	private Snake player2 = new Snake(this, new Point(10, 10), Color.BLUE);
-	
+
 	private AppleGenerator apples = null;
-	
+
 	private boolean play = true;
 	private boolean pause = false;
 	private String winner = "";
 	private final static int FPS = 30;
-	
+
 	public final static int SCALE_RATIO = 10;
-	
-	private Thread render = new Thread(()->{
-		while(play) {
-			if(!pause) {
+
+	private Thread render = new Thread(() -> {
+		while (play) {
+			if (!pause) {
 				update();
-				repaint(1000/FPS);
+				repaint(1000 / FPS);
 				try {
-					Thread.sleep(1000/FPS);
+					Thread.sleep(1000 / FPS);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -37,15 +37,17 @@ public class SnakePanel extends JPanel {
 		}
 		repaint();
 	});
-	
+
 	private KeyListener keyListener = new KeyListener() {
-		
+
 		@Override
-		public void keyTyped(KeyEvent e) {}
-		
+		public void keyTyped(KeyEvent e) {
+		}
+
 		@Override
-		public void keyReleased(KeyEvent e) {}
-		
+		public void keyReleased(KeyEvent e) {
+		}
+
 		@Override
 		public void keyPressed(KeyEvent e) {
 			switch (e.getKeyCode()) {
@@ -76,15 +78,15 @@ public class SnakePanel extends JPanel {
 			}
 		}
 	};
-	
+
 	public int getWidthScale() {
 		return getWidth() / SCALE_RATIO;
 	}
-	
+
 	public int getHeightScale() {
 		return getHeight() / SCALE_RATIO;
 	}
-	
+
 	public boolean isPlay() {
 		return play;
 	}
@@ -92,7 +94,7 @@ public class SnakePanel extends JPanel {
 	public boolean isPause() {
 		return pause;
 	}
-	
+
 	public SnakePanel() {
 		this.setDoubleBuffered(true);
 		this.setFocusable(true);
@@ -100,20 +102,20 @@ public class SnakePanel extends JPanel {
 		apples = new AppleGenerator(this);
 		render.start();
 	}
-	
+
 	public AppleGenerator getApples() {
 		return apples;
 	}
 
 	private void update() {
 		player1.move();
-		if(player1.collide(player2)) {
+		if (player1.collide(player2)) {
 			winner = "Blue";
 			play = false;
 			return;
 		}
 		player2.move();
-		if(player2.collide(player1)) {
+		if (player2.collide(player1)) {
 			winner = "Black";
 			play = false;
 			return;
@@ -122,15 +124,15 @@ public class SnakePanel extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
-		//super.paint(g);
+		// super.paint(g);
 		g.clearRect(0, 0, getWidth(), getHeight());
 		apples.draw(g);
 		player1.draw(g);
 		player2.draw(g);
-		
-		if(!winner.equals("")) {
+
+		if (!winner.equals("")) {
 			g.setFont(new Font("Arial", Font.BOLD, 20));
-			g.drawString(winner + " snake Win!", getWidth()/2-60, getHeight()/2);
+			g.drawString(winner + " snake Win!", getWidth() / 2 - 60, getHeight() / 2);
 		}
 	}
 }

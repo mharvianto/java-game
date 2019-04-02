@@ -99,10 +99,10 @@ public class Snake {
 				g.fillRect(p.x * SnakePanel.SCALE_RATIO - 1, p.y * SnakePanel.SCALE_RATIO - 1,
 						SnakePanel.SCALE_RATIO + 2, SnakePanel.SCALE_RATIO + 2);
 				g.setColor(Color.WHITE);
-				if(direction == Direction.UP || direction == Direction.DOWN) {
+				if (direction == Direction.UP || direction == Direction.DOWN) {
 					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 1, p.y * SnakePanel.SCALE_RATIO + 5, 3, 2);
 					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 6, p.y * SnakePanel.SCALE_RATIO + 5, 3, 2);
-				}else {
+				} else {
 					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 5, p.y * SnakePanel.SCALE_RATIO + 1, 2, 3);
 					g.fillRect(p.x * SnakePanel.SCALE_RATIO + 5, p.y * SnakePanel.SCALE_RATIO + 6, 2, 3);
 				}
