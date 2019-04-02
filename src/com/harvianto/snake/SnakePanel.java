@@ -35,6 +35,7 @@ public class SnakePanel extends JPanel {
 				}
 			}
 		}
+		repaint();
 	});
 	
 	private KeyListener keyListener = new KeyListener() {
