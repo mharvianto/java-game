@@ -18,6 +18,7 @@ public class AppleGenerator {
 			} catch (InterruptedException e) { }
 			listApples.add(new Apple(new Dimension(panel.getWidthScale(), panel.getHeightScale())));
 		}
+		listApples.clear();
 	});
 	
 	public AppleGenerator(SnakePanel panel) {
@@ -37,9 +38,11 @@ public class AppleGenerator {
 		return false;
 	}
 	
-	public synchronized void draw(Graphics g) {
-		for (Apple apple : listApples) {
-			apple.draw(g);
-		}
+	public void draw(Graphics g) {
+		try {
+			for (Apple apple : listApples) {
+				apple.draw(g);
+			}
+		}catch(Exception ex) { }
 	}
 }
