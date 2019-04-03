@@ -29,7 +29,7 @@ public class AppleGenerator {
 		th.start();
 	}
 
-	public synchronized boolean collide(Point p) {
+	public boolean collide(Point p) {
 		try {
 			Iterator<Apple> it = listApples.iterator();
 			while (it.hasNext()) {
