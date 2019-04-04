@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 
 public class SnakePanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5392427676448251755L;
 	private Snake player1 = new Snake(this);
 	private Snake player2 = new Snake(this, new Point(10, 10), Color.BLUE);
 
