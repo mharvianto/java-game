@@ -1,7 +1,6 @@
 package com.harvianto.chess;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -12,60 +11,66 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ChessBoard extends JPanel {
 
 	private final int N = 8;
 	private final int SIZE = 500 / 8;
 	private final Rectangle BOUND = new Rectangle(0, 0, 500, 500);
-	
+
 	private Point hover = null;
 	private Point selected = null;
-	
+
 	private MouseMotionListener mouseMotionListener = new MouseMotionListener() {
-		
+
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			Point p = e.getPoint();
-			if(BOUND.contains(p)) {
+			if (BOUND.contains(p)) {
 				p.x /= SIZE;
 				p.y /= SIZE;
-				hover = (Point)p.clone();
-			}else {
+				hover = (Point) p.clone();
+			} else {
 				hover = null;
 			}
 			repaint();
 		}
-		
+
 		@Override
-		public void mouseDragged(MouseEvent e) { }
+		public void mouseDragged(MouseEvent e) {
+		}
 	};
-	
+
 	private MouseListener mouseListener = new MouseListener() {
-		
+
 		@Override
-		public void mouseReleased(MouseEvent e) { }
-		
+		public void mouseReleased(MouseEvent e) {
+		}
+
 		@Override
-		public void mousePressed(MouseEvent e) { }
-		
+		public void mousePressed(MouseEvent e) {
+		}
+
 		@Override
-		public void mouseExited(MouseEvent e) { }
-		
+		public void mouseExited(MouseEvent e) {
+		}
+
 		@Override
-		public void mouseEntered(MouseEvent e) { }
-		
+		public void mouseEntered(MouseEvent e) {
+		}
+
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			Point p = e.getPoint();
-			if(BOUND.contains(p)) {
+			if (BOUND.contains(p)) {
 				Point select = new Point(p.x / SIZE, p.y / SIZE);
-				if(selected == null) {
+				if (selected == null) {
 					selected = select;
 				} else {
-					if(selected.equals(select)) {
+					if (selected.equals(select)) {
 						selected = null;
 					} else {
-						//move
+						// move
 					}
 				}
 				repaint();
@@ -85,16 +90,16 @@ public class ChessBoard extends JPanel {
 			for (int j = 0; j < N; j++) {
 				if ((i + j) % 2 == 0) {
 					g.setColor(Color.WHITE);
-				}else {
+				} else {
 					g.setColor(Color.BLACK);
 				}
-				if(hover != null && hover.x == i && hover.y == j) {
+				if (hover != null && hover.x == i && hover.y == j) {
 					g.setColor(Color.GREEN);
 				}
-				if(selected != null && selected.equals(new Point(i, j))) {
+				if (selected != null && selected.equals(new Point(i, j))) {
 					g.setColor(Color.red);
 				}
-				g.fillRect(i*SIZE, j*SIZE, SIZE, SIZE);
+				g.fillRect(i * SIZE, j * SIZE, SIZE, SIZE);
 			}
 		}
 	}

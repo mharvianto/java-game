@@ -13,6 +13,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ColorMatch extends JPanel {
 
 	private Color[][] cells = new Color[10][10];

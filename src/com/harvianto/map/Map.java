@@ -3,24 +3,21 @@ package com.harvianto.map;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Map extends JPanel {
 	private final int PATH = 0;
+	@SuppressWarnings("unused")
 	private final int WALL = 1;
 
 	private final Color[] COLORS = new Color[] { Color.WHITE, Color.GRAY };
@@ -111,10 +108,10 @@ public class Map extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		// background
-		for (int i = camera.x; i < camera.x + WINDOW.width; i++) {
-			for (int j = camera.y; j < camera.y + WINDOW.height; j++) {
-				g.setColor(COLORS[maps.get(i).get(j)]);
-				g.fillRect((i - camera.x) * SIZE, (j - camera.y) * SIZE, SIZE, SIZE);
+		for (int x = camera.x; x < camera.x + WINDOW.width; x++) {
+			for (int y = camera.y; y < camera.y + WINDOW.height; y++) {
+				g.setColor(COLORS[maps.get(x).get(y)]);
+				g.fillRect((x - camera.x) * SIZE, (y - camera.y) * SIZE, SIZE, SIZE);
 			}
 		}
 		// character
